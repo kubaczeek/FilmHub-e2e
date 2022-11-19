@@ -25,14 +25,19 @@ var resolution = [
 
 describe('Login with valid data', function () {
     credentials.forEach((data) => {
-        cy.visit('')
         resolution.forEach((resolutionData) => {
             it(`Sign in by user: ${data.username} on resolution ${resolutionData.h} x ${resolutionData.w}`, function () {
+                cy.visit('', {
+                    auth: {
+                        username: 'filmhub',
+                        password: 'filmpass'
+                      }})
                 cy.viewport(resolutionData['w'], resolutionData['h'])
                 cy.url().should('eq', Cypress.config('baseUrl'))
                 cy.clickSignInBtn()
                 cy.fillLoginFormAndLogIn(data)
                 cy.url().should('eq', Cypress.config('baseUrl'))
+                cy.visit('')
             })
         })
     })

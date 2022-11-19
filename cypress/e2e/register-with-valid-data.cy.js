@@ -29,7 +29,11 @@ describe('Register with valid data', function () {
         credentials.emailSeed = makeId(6) + "@gmail.com";
         resolution.forEach((resolutionData) => {
             it(`Register user: ${credentials.emailSeed} on resolution ${resolutionData.h} x ${resolutionData.w}`, function () {
-                cy.visit('')
+                cy.visit('', {
+                    auth: {
+                        username: 'filmhub',
+                        password: 'filmpass'
+                      }})      
                 cy.viewport(resolutionData['w'], resolutionData['h'])
                 cy.url().should('eq', Cypress.config('baseUrl'))
                 cy.clickSignUpBtn()

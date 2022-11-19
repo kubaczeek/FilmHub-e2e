@@ -21,7 +21,11 @@ describe('Login without providing data', function () {
     resolution.forEach((resolutionData) => {
         it(`Try to sign in without providing data on resolution ${resolutionData.h} x ${resolutionData.w}`, function () {
             cy.viewport(resolutionData['w'], resolutionData['h'])
-            cy.visit('')
+            cy.visit('', {
+                auth: {
+                    username: 'filmhub',
+                    password: 'filmpass'
+                  }})
             cy.url().should('eq', Cypress.config('baseUrl'))
             cy.logInWithoutData()
             cy.url().should('eq', Cypress.config('baseUrl'))
