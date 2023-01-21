@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "9324bff2-fb28-44c7-a9c5-ea65cba0c810",
+		"name": "test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16715350"
+	},
+	"item": [
+		{
+			"name": "https://filmhub.furai.pl/graphql",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Schema after unsuccesfull login is valid', function () {\r",
+							"    pm.expect(pm.response.text()).to.be.contain(\"Użytkownik o podanym adresie email nie istnieje\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation SendResetPasswordEmail($sendResetPasswordEmail: SendResetPasswordEmailDto!) {\r\n  sendResetPasswordEmail(sendResetPasswordEmail: $sendResetPasswordEmail)\r\n}",
+						"variables": "{\r\n  \"sendResetPasswordEmail\": {\r\n    \"email\": \"mjulek9@gmail.com\"\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://filmhub.furai.pl/graphql",
+					"protocol": "https",
+					"host": [
+						"filmhub",
+						"furai",
+						"pl"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://filmhub.furai.pl/graphql Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Schema after unsuccesfull login is valid', function () {\r",
+							"    pm.expect(pm.response.text()).to.be.contain(\"String cannot represent a non string value:\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation SendResetPasswordEmail($sendResetPasswordEmail: SendResetPasswordEmailDto!) {\r\n  sendResetPasswordEmail(sendResetPasswordEmail: $sendResetPasswordEmail)\r\n}",
+						"variables": "{\r\n  \"sendResetPasswordEmail\": {\r\n    \"email\": 1\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://filmhub.furai.pl/graphql",
+					"protocol": "https",
+					"host": [
+						"filmhub",
+						"furai",
+						"pl"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://filmhub.furai.pl/graphql Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Schema after unsuccesfull login is valid', function () {\r",
+							"    pm.expect(pm.response.text()).to.be.contain(\"email must be an email\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation SendResetPasswordEmail($sendResetPasswordEmail: SendResetPasswordEmailDto!) {\r\n  sendResetPasswordEmail(sendResetPasswordEmail: $sendResetPasswordEmail)\r\n}",
+						"variables": "{\r\n  \"sendResetPasswordEmail\": {\r\n    \"email\": \"test@test@test\"\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://filmhub.furai.pl/graphql",
+					"protocol": "https",
+					"host": [
+						"filmhub",
+						"furai",
+						"pl"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://filmhub.furai.pl/graphql Copy 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Schema after unsuccesfull login is valid', function () {\r",
+							"    pm.expect(pm.response.text()).to.be.contain(\"Expected non-nullable type \\\"String!\\\" not to be null\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation SendResetPasswordEmail($sendResetPasswordEmail: SendResetPasswordEmailDto!) {\r\n  sendResetPasswordEmail(sendResetPasswordEmail: $sendResetPasswordEmail)\r\n}",
+						"variables": "{\r\n  \"sendResetPasswordEmail\": {\r\n    \"email\": null\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://filmhub.furai.pl/graphql",
+					"protocol": "https",
+					"host": [
+						"filmhub",
+						"furai",
+						"pl"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://filmhub.furai.pl/graphql Copy 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Schema after unsuccesfull login is valid', function () {\r",
+							"    pm.expect(pm.response.text()).to.be.contain(\"Field \\\"email\\\" of required type \\\"String!\\\" was not provided\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation SendResetPasswordEmail($sendResetPasswordEmail: SendResetPasswordEmailDto!) {\r\n  sendResetPasswordEmail(sendResetPasswordEmail: $sendResetPasswordEmail)\r\n}",
+						"variables": "{\r\n  \"sendResetPasswordEmail\": {\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://filmhub.furai.pl/graphql",
+					"protocol": "https",
+					"host": [
+						"filmhub",
+						"furai",
+						"pl"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://filmhub.furai.pl/graphql Copy 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Schema after unsuccesfull login is valid', function () {\r",
+							"    console.log(pm.response.text())\r",
+							"    pm.expect(pm.response.text()).to.be.contain(\"Variable \\\"$sendResetPasswordEmail\\\" of required type \\\"SendResetPasswordEmailDto!\\\" was not provided.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation SendResetPasswordEmail($sendResetPasswordEmail: SendResetPasswordEmailDto!) {\r\n  sendResetPasswordEmail(sendResetPasswordEmail: $sendResetPasswordEmail)\r\n}",
+						"variables": "{\r\n  \"sendResetPassword\": {\r\n    \"email\": \"mjulek9@gmail.com\"\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://filmhub.furai.pl/graphql",
+					"protocol": "https",
+					"host": [
+						"filmhub",
+						"furai",
+						"pl"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
